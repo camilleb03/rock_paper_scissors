@@ -7,16 +7,10 @@ nb_games_won = 0
 
 def main():
     run = True
+    # Present possibles actions to user
+    show_actions_menu()
+    show_moves_menu()
     while(run):
-        # Present action to user
-        print("---- POSSIBLE ACTIONS ----")
-        print("h - Rules")
-        print("s - Statistics")
-        print("q - Quit game")
-        print("----- MOVE SELECTION -----")
-        for move in moves.items():
-            print(move[0], "-", move[1])
-        print("--------------------------")
         # Take input from user
         action = input()
         # Verify if user wants to quit
@@ -26,24 +20,21 @@ def main():
             # run = False
             sys.exit()
 
+        if str(action).lower() == "a":
+            show_actions_menu()
+            continue
+
+        if str(action).lower() == "m":
+            show_moves_menu()
+            continue
+
         # Help menu
         if str(action).lower() == "h":
-            print("------ GAME RULES -------")
-            print("#1",moves.get(1), "beats", moves.get(3))
-            print("#2",moves.get(2), "beats", moves.get(1))
-            print("#3",moves.get(3), "beats", moves.get(2))
-            print("--------------------------")
+            show_help_menu()
             continue
         
         if str(action).lower() == "s":
-            print("------ STATISTICS -------")
-            print("Total of games played:", nb_games_played)
-            print("Total of games won:", nb_games_won)
-            if nb_games_played != 0:
-                print("Win rate:", str(nb_games_won * 100 // nb_games_played) + "%")
-            else:
-                print("Win rate: No games played yet")
-            print("--------------------------")
+            show_statistics_menu()
             continue
 
         # Verify if the input is a number
@@ -51,6 +42,7 @@ def main():
             int(action)
         except:
             print("Wrong action! Retry")
+            show_actions_menu()
             continue
         user_move = int(action)
         # Verify it is a valid number (1,2,3)
@@ -67,6 +59,7 @@ def main():
         # Retry
         else:
             print("Wrong action! Retry")
+            show_actions_menu()
 
 """
 When user wins, user = opp + 1
@@ -91,6 +84,38 @@ def winner(user_move, opponent_move):
         print("TIE ! :|")
     global nb_games_played
     nb_games_played += 1
+
+def show_actions_menu():
+    print("---- POSSIBLE ACTIONS ----")
+    print("a - Possible actions")
+    print("m - List of moves")
+    print("h - Rules")
+    print("s - Statistics")
+    print("q - Quit game")
+    print("--------------------------")
+
+def show_moves_menu():
+    print("----- MOVE SELECTION -----")
+    for move in moves.items():
+        print(move[0], "-", move[1])
+    print("--------------------------")
+
+def show_help_menu():
+    print("------ GAME RULES -------")
+    print("#1",moves.get(1), "beats", moves.get(3))
+    print("#2",moves.get(2), "beats", moves.get(1))
+    print("#3",moves.get(3), "beats", moves.get(2))
+    print("--------------------------")
+
+def show_statistics_menu():
+    print("------ STATISTICS -------")
+    print("Total of games played:", nb_games_played)
+    print("Total of games won:", nb_games_won)
+    if nb_games_played != 0:
+        print("Win rate:", str(nb_games_won * 100 // nb_games_played) + "%")
+    else:
+        print("Win rate: No games played yet")
+    print("--------------------------")
 
 def winner_2(user_move, opponent_move):
     # User won
