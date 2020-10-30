@@ -17,7 +17,6 @@ def main():
         if str(action).lower() == "q":
             # Quit game
             print("Thanks for playing!")
-            # run = False
             sys.exit()
 
         if str(action).lower() == "a":
@@ -28,7 +27,6 @@ def main():
             show_moves_menu()
             continue
 
-        # Help menu
         if str(action).lower() == "h":
             show_help_menu()
             continue
@@ -41,8 +39,7 @@ def main():
         try:
             int(action)
         except:
-            print("Wrong action! Retry")
-            show_actions_menu()
+            show_wrong_input()
             continue
         user_move = int(action)
         # Verify it is a valid number (1,2,3)
@@ -52,14 +49,12 @@ def main():
             print("---------- GAME ----------")
             print("You:", moves.get(user_move))
             print("Opponent:", moves.get(opponent_move))
-            # winner_2(moves.get(user_move), moves.get(opponent_move))
-            # Who won
+            # Determine who won
             winner(user_move, opponent_move)
             print("--------------------------")
         # Retry
         else:
-            print("Wrong action! Retry")
-            show_actions_menu()
+            show_wrong_input()
 
 """
 When user wins, user = opp + 1
@@ -117,29 +112,8 @@ def show_statistics_menu():
         print("Win rate: No games played yet")
     print("--------------------------")
 
-def winner_2(user_move, opponent_move):
-    # User won
-    # User = Rock > Opponent = Scissors
-    if user_move == moves.get(1) and opponent_move == moves.get(3):
-        print("You won ! :)")
-    # User = Paper > Opponent = Rock
-    elif user_move == moves.get(2) and opponent_move == moves.get(1):
-        print("You won ! :)")
-    # User = Scissors > Opponent = Paper
-    elif user_move == moves.get(3) and opponent_move == moves.get(2):
-        print("You won ! :)")
-    # Opponent won
-    # User = Rock < Opponent = Paper
-    elif user_move == moves.get(1) and opponent_move == moves.get(2):
-        print("You lost ! :(")
-    # User = Paper < Opponent = Scissors
-    elif user_move == moves.get(2) and opponent_move == moves.get(3):
-        print("You lost ! :(")
-    # User = Scissors < Opponent = Rock
-    elif user_move == moves.get(3) and opponent_move == moves.get(1):
-        print("You lost ! :(")
-    # Tie
-    else:
-        print("It's a tie ! :|")
+def show_wrong_input():
+    print("Wrong action! Retry")
+    show_actions_menu()
 
 main()
