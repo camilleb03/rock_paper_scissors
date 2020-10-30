@@ -19,10 +19,11 @@ def main():
         # Verify if user wants to quit
         if str(action).lower() == "q":
             # Quit game
-            print("Thanks for playing !")
+            print("Thanks for playing!")
             # run = False
             sys.exit()
-        
+
+        # Help menu
         if str(action).lower() == "h":
             print("------ GAME RULES -------")
             print("#1",moves.get(1), "beats", moves.get(3))
@@ -35,19 +36,21 @@ def main():
         try:
             int(action)
         except:
-            print("Wrong action ! Retry")
+            print("Wrong action! Retry")
             continue
         user_move = int(action)
         # Verify it is a valid number (1,2,3)
         if moves.get(user_move):
-            print("You have chosen : ", moves.get(user_move))
+            print("---------- GAME ----------")
+            print("You:", moves.get(user_move))
             opponent_move = random.randint(1,3)
-            print("Opponent has chosen : ", moves.get(opponent_move))
+            print("Opponent:", moves.get(opponent_move))
             # winner_2(moves.get(user_move), moves.get(opponent_move))
             winner(user_move, opponent_move)
+            print("--------------------------")
         # Retry
         else:
-            print("Wrong action ! Retry")
+            print("Wrong action! Retry")
 
 """
 When user wins, user = opp + 1
@@ -61,13 +64,13 @@ When it's a tie, nothing is equal, i.e.
 def winner(user_move, opponent_move):
     # User won
     if (opponent_move % 3) + 1 == user_move:
-        print("You won ! :)")
+        print("WON ! :)")
     # Opponent won
     elif (user_move % 3) + 1 == opponent_move:
-        print("You lost ! :(")
+        print("LOST ! :(")
     # Tie
     else:
-        print("It's a tie ! :|")
+        print("TIE ! :|")
 
 def winner_2(user_move, opponent_move):
     # User won
