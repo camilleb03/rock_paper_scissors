@@ -32,10 +32,7 @@ def main():
             print("You have chosen : ", moves.get(user_move))
             opponent_move = random.randint(1,3)
             print("Opponent has chosen : ", moves.get(opponent_move))
-            if winner(moves.get(user_move), moves.get(user_move)):
-                print("You won ! :)")
-            else:
-                print("You lose ! :(")
+            winner(moves.get(user_move), moves.get(opponent_move))
         # Retry
         else:
             print("Wrong action ! Retry")
@@ -43,9 +40,26 @@ def main():
 def winner(user_move, opponent_move):
     # User won
     # User = Rock > Opponent = Scissors
-    # if user_move == moves.get(1) and opponent_move == moves.get(3):
-        return True
-
+    if user_move == moves.get(1) and opponent_move == moves.get(3):
+        print("You won ! :)")
+    # User = Paper > Opponent = Rock
+    elif user_move == moves.get(2) and opponent_move == moves.get(1):
+        print("You won ! :)")
+    # User = Scissors > Opponent = Paper
+    elif user_move == moves.get(3) and opponent_move == moves.get(2):
+        print("You won ! :)")
     # Opponent won
+    # User = Rock < Opponent = Paper
+    elif user_move == moves.get(1) and opponent_move == moves.get(2):
+        print("You lost ! :(")
+    # User = Paper < Opponent = Scissors
+    elif user_move == moves.get(2) and opponent_move == moves.get(3):
+        print("You lost ! :(")
+    # User = Scissors < Opponent = Rock
+    elif user_move == moves.get(3) and opponent_move == moves.get(1):
+        print("You lost ! :(")
+    # Neither won nor lost
+    else:
+        print("It's a tie ! :|")
 
 main()
