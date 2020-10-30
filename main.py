@@ -26,13 +26,13 @@ def main():
         except:
             print("Wrong action ! Retry")
             continue
-
+        user_move = int(action)
         # Verify it is a valid number (1,2,3)
-        if moves.get(int(action)):
-            print("You have chosen : ", moves.get(int(action)))
-            opponent_move = moves.get(random.randint(1,3))
-            print("Opponent has chosen : ", opponent_move)
-            if winner(moves.get(int(action)), opponent_move):
+        if moves.get(user_move):
+            print("You have chosen : ", moves.get(user_move))
+            opponent_move = random.randint(1,3)
+            print("Opponent has chosen : ", moves.get(opponent_move))
+            if winner(moves.get(user_move), moves.get(user_move)):
                 print("You won ! :)")
             else:
                 print("You lose ! :(")
