@@ -84,7 +84,7 @@ def show_actions_menu():
     print("---- POSSIBLE ACTIONS ----")
     print("a - Possible actions")
     print("m - List of moves")
-    print("h - Rules")
+    print("h - Help with game rules")
     print("s - Statistics")
     print("q - Quit game")
     print("--------------------------")
@@ -113,7 +113,7 @@ def show_statistics_menu():
     print("--------------------------")
 
 def show_wrong_input():
-    print("Wrong action! Retry")
+    print("Wrong action!")
     show_actions_menu()
 
 main()
