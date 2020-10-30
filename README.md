@@ -1,5 +1,5 @@
 # Rock, Paper, Scissors Game
 - Made in Python
-- Command line game
+- Simple command line game
 
-Click here to run : https://repl.it/@camilleb03/rockpaperscissors#main.py
+[![Run on Repl.it](https://repl.it/badge/github/@camilleb03/rockpaperscissors)](https://repl.it/@camilleb03/rockpaperscissors)
